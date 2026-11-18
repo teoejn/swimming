@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b5165">
+  <meta name="description" content="Find swimming classes by neighbourhood and condominium. Browse example schedules and manage demo enrollments.">
+  <title>BlueCurrent | Swimming Class Enrollment</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230b8e9c'/%3E%3Cpath d='M9 26q8-9 16 0t16 0t16 0M9 39q8-9 16 0t16 0t16 0' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#16384b;background:#f3f7f9;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #70d3da;outline-offset:3px}
+    .container{max-width:1120px;margin:auto;padding:24px 22px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:23px}.brand{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:850;letter-spacing:-.5px}.logo{width:37px;height:37px;display:grid;place-items:center;background:#0a909c;color:#fff;border-radius:12px;font-size:28px}.tiny{padding:8px 12px;border-radius:30px;background:#e1f5f4;color:#0a868e;font-size:11px;font-weight:850;letter-spacing:1px;text-transform:uppercase}
+    .hero{border-radius:24px;padding:35px 38px;background:linear-gradient(117deg,#0d314e,#0a5470 68%,#079497);color:#fff;box-shadow:0 14px 30px #0d34452a}.kicker{text-transform:uppercase;color:#9ee5df;letter-spacing:2px;font-size:11px;font-weight:850;margin:0 0 12px}.hero h1{font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-1.3px;margin:0 0 13px}.hero p:last-child{margin:0;font-size:14px;line-height:1.65;max-width:610px;color:#d0e6eb}
+    .disclaimer{font-size:12px;line-height:1.6;color:#617f8f;margin:15px 0 23px}.disclaimer strong{color:#147f89}.path{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 24px}.path span{display:inline-flex;gap:7px;align-items:center;background:#e8f2f5;padding:9px 11px;border-radius:9px;font-size:12px;font-weight:760;color:#467482}.path b{background:#0d8d93;color:white;border-radius:6px;display:grid;place-items:center;width:19px;height:19px;font-size:11px}.path i{font-style:normal;color:#8ca6b4}
+    section{margin-top:32px}.sectionhead{margin-bottom:15px}h2{font-size:22px;letter-spacing:-.7px;margin:0 0 5px}.muted{color:#7c95a2;font-size:13px;line-height:1.5;margin:0}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .choice{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;border:1px solid #d9e7ee;background:#fff;border-radius:15px;padding:18px 20px;color:#204456;transition:.15s}.choice:hover,.venue:hover,.course:hover{border-color:#74c4ca}.choice[aria-pressed=true],.venue[aria-pressed=true]{border:2px solid #0d9aa5;background:#eefbfa;padding:17px 19px}.choice strong{display:block;font-size:18px}.choice small{display:block;color:#8299a5;margin-top:4px;font-size:12px}.choice .right{font-size:12px;font-weight:800;color:#138d98}
+    .venue{display:block;text-align:left;border-radius:16px;border:1px solid #dce8ed;background:white;padding:19px;transition:.15s;color:#204557}.venue[aria-pressed=true]{padding:18px}.venue .eyebrow{color:#128b91;font-weight:850;letter-spacing:.8px;text-transform:uppercase;font-size:10px}.venue strong{display:block;font-size:18px;letter-spacing:-.35px;margin:9px 0}.venue .addr{display:block;font-size:12px;color:#698492;line-height:1.5}.venue .choose{display:block;font-size:12px;color:#0c838d;font-weight:800;margin-top:15px}
+    .location{background:#fff;border:1px solid #dfeaf0;border-radius:11px;padding:12px 16px;margin-top:13px;display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;font-size:12px;color:#6b8595}.location strong{color:#1c4b60}.location a{color:#0c8d96;text-decoration:none;font-weight:800}.location a:hover{text-decoration:underline}
+    .course{background:#fff;border:1px solid #deeaef;border-radius:17px;padding:20px;display:flex;flex-direction:column;gap:16px;transition:border-color .15s}.coursehead,.coursebottom{display:flex;justify-content:space-between;gap:8px;align-items:center}.tag{color:#078b92;background:#e6f7f5;padding:7px 9px;border-radius:7px;text-transform:uppercase;letter-spacing:.5px;font-size:10px;font-weight:850}.code{font-size:11px;color:#a1b4bd}.course h3{margin:0 0 7px;font-size:19px;letter-spacing:-.45px}.course p{color:#688493;line-height:1.8;font-size:12px;margin:0}.seat{color:#78909e;font-size:12px}.bar{background:#e6eff3;border-radius:20px;height:7px;margin-top:10px;overflow:hidden}.fill{background:#0da7ab;height:100%;border-radius:20px}.selectbtn{background:#eefafa;color:#077f88;border:1px solid #b9e6e7;padding:11px 13px;border-radius:10px;font-size:12px;font-weight:850}.selectbtn:hover{background:#ddf5f4}
+    .work{display:grid;grid-template-columns:1.15fr .8fr;gap:16px;align-items:start}.panel,.register{background:#fff;border:1px solid #dde9ee;border-radius:19px;padding:24px}.panel p{font-size:13px;color:#718c9a;line-height:1.6}.field{margin:17px 0}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:8px}.field input,.field select,.filter{height:44px;width:100%;background:#fff;border:1px solid #d5e3ea;border-radius:10px;padding:0 12px;color:#2b5063;outline:none}.info{background:#f0f8fa;padding:12px 14px;border-radius:10px;color:#49798a;font-size:12px;line-height:1.6}.info strong{color:#117c85}.primary{width:100%;border:0;background:#078f98;color:white;padding:13px 16px;border-radius:11px;font-size:13px;font-weight:850;margin-top:15px}.primary:hover{background:#0b7581}
+    .metric{display:flex;gap:12px;align-items:center;margin:17px 0}.metric .symbol{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#e6f6f5;color:#0d969d;font-size:18px;font-weight:800}.metric strong{display:block;font-size:19px}.metric small{font-size:12px;color:#78919f}.divider{height:1px;background:#e5edf1;margin:21px 0}.sidehint{color:#7b939e;font-size:12px;line-height:1.7}.sidehint strong{color:#385b6b}
+    .register{margin-top:30px}.registerhead{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}.actions{display:flex;gap:8px;flex-wrap:wrap}.secondary{border:1px solid #d5e5ec;background:#fff;color:#456a7c;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800}.secondary:hover{background:#f2f8fb}.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:13px}.filters input{flex:1;min-width:170px;max-width:400px}.filters select{max-width:205px;font-size:12px}.tablewrap{border:1px solid #e0eaf0;border-radius:11px;overflow:auto}table{width:100%;min-width:680px;border-collapse:collapse;text-align:left}th{background:#f5f9fb;text-transform:uppercase;letter-spacing:1px;color:#8da4b0;font-size:10px;padding:13px}td{border-top:1px solid #eaf0f3;padding:13px;font-size:12px;color:#4b7184;line-height:1.55}td strong{color:#284d60}.status{display:inline-block;padding:5px 9px;border-radius:50px;background:#e1f8f1;color:#07816f;font-size:10px;font-weight:850}.status.wait{background:#fff2dc;color:#a76e16}.remove{border:0;background:transparent;color:#be6572;font-size:12px;font-weight:800}.remove:hover{text-decoration:underline}.empty{text-align:center;color:#93a9b4;padding:24px}.footer{color:#8da1ad;font-size:11px;line-height:1.5;margin:15px 0 0}
+    #toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:.2s;z-index:10;background:#163c4e;color:white;border-radius:11px;padding:12px 17px;font-size:12px;max-width:calc(100vw - 32px)}#toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:750px){.container{padding:16px 13px 40px}.hero{padding:28px 23px}.two,.work{grid-template-columns:1fr}.path{gap:6px}.path span{font-size:11px}.panel,.register{padding:17px}.top{margin-bottom:15px}.registerhead{align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="top"><div class="brand"><span class="logo">≈</span> BlueCurrent Swim School</div><span class="tiny">Demo website</span></header>
+    <div class="hero"><p class="kicker">Swimming programmes · Singapore</p><h1>Find a swim class near you.</h1><p>Choose a neighbourhood, pick a condominium, and explore available classes. Try enrolling a swimmer using our sample class register.</p></div>
+    <p class="disclaimer"><strong>Illustrative listings:</strong> The condominium names are real; class schedules, coaches, and student records are fictional. This website does not confirm lessons, venue access or availability at any condominium.</p>
+    <nav class="path" aria-label="Enrollment steps"><span><b>1</b> Neighbourhood</span><i>→</i><span><b>2</b> Condo</span><i>→</i><span><b>3</b> Class</span><i>→</i><span><b>4</b> Enroll</span></nav>
+    <section aria-labelledby="area-heading"><div class="sectionhead"><h2 id="area-heading">1. Select your neighbourhood</h2><p class="muted">Start by choosing where you'd like to swim.</p></div><div class="two" id="areas"></div></section>
+    <section aria-labelledby="venue-heading"><div class="sectionhead"><h2 id="venue-heading">2. Choose a condominium</h2><p class="muted">Example locations for your selected neighbourhood.</p></div><div class="two" id="venues"></div><div class="location"><span>Selected location: <strong id="currentVenue"></strong></span><a id="map" href="#" target="_blank" rel="noopener noreferrer">View on Google Maps ↗</a></div></section>
+    <section id="classes-section" aria-labelledby="classes-heading"><div class="sectionhead"><h2 id="classes-heading">3. Browse swimming classes</h2><p class="muted" id="classSubtitle"></p></div><div class="two" id="classes"></div></section>
+    <section class="work" aria-label="Enrollment and summary"><div class="panel" id="enrollment"><h2>4. Enroll a swimmer</h2><p>Only classes at the selected condominium appear here.</p><form id="form"><div class="info" id="formLocation"></div><div class="field"><label for="swimmer">Swimmer name</label><input id="swimmer" type="text" minlength="2" maxlength="65" placeholder="e.g. Jamie Lee" autocomplete="off" required></div><div class="field"><label for="courseSelect">Swimming class</label><select id="courseSelect" required></select></div><div class="info" id="availability" role="status"></div><button class="primary" type="submit">Confirm demo enrollment</button></form><p class="footer">Full classes place new swimmers on the waitlist.</p></div><aside class="panel"><h2>Selected location</h2><p>Enrollment overview for this condominium.</p><div class="metric"><span class="symbol">✓</span><div><strong id="enrolled">0</strong><small>Enrolled swimmers</small></div></div><div class="metric"><span class="symbol">+</span><div><strong id="available">0</strong><small>Open seats</small></div></div><div class="metric"><span class="symbol">⋯</span><div><strong id="waiting">0</strong><small>Waitlisted swimmers</small></div></div><div class="divider"></div><div class="sidehint"><strong>Try this:</strong> At Clementi → Parc Clematis, Junior Water Confidence is already full. Add a swimmer, then remove an enrolled swimmer to see the waitlist update.</div></aside></section>
+    <section class="register" aria-labelledby="register-heading"><div class="registerhead"><div><h2 id="register-heading">Enrollment register</h2><p class="muted">Manage sample swimmers across locations.</p></div><div class="actions"><button class="secondary" type="button" id="export">Export CSV</button><button class="secondary" type="button" id="reset">Reset demo</button></div></div><div class="filters"><input class="filter" id="search" type="search" aria-label="Search students and classes" placeholder="Search swimmer, location or class"><select class="filter" id="scope" aria-label="Location filter"><option value="venue">Selected condo</option><option value="area">Selected neighbourhood</option><option value="all">All locations</option></select><select class="filter" id="statusFilter" aria-label="Status filter"><option value="all">All statuses</option><option value="Enrolled">Enrolled</option><option value="Waitlisted">Waitlisted</option></select></div><div class="tablewrap"><table><thead><tr><th>Swimmer</th><th>Area</th><th>Condominium / class</th><th>Status</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div><p class="footer">Changes are saved locally in your browser when supported. Data is not shared across devices; payments and real registrations are not processed.</p></section>
+  </main><div id="toast" role="status" aria-live="polite"></div>
+  <script>
+  (()=>{
+    'use strict';
+    const venues=[
+      {id:'PC',area:'Clementi',name:'Parc Clematis',address:'Jalan Lempeng, Clementi, Singapore'},
+      {id:'CC',area:'Clementi',name:'The Clement Canopy',address:'Clementi Avenue 1, Singapore'},
+      {id:'SH',area:'Bishan',name:'Sky Habitat',address:'Bishan Street 15, Singapore'},
+      {id:'B8',area:'Bishan',name:'Bishan 8',address:'Bishan Street 21, Singapore'}
+    ];
+    const classes=[
+      {id:'SW101',venue:'PC',name:'Junior Water Confidence',level:'Kids · Beginner',schedule:'Saturday · 9:00–10:00 AM',coach:'Mei',capacity:3},
+      {id:'SW102',venue:'PC',name:'Adult Beginner',level:'Adults · Beginner',schedule:'Sunday · 8:30–9:30 AM',coach:'Farah',capacity:4},
+      {id:'SW103',venue:'CC',name:'Stroke Foundations',level:'Intermediate',schedule:'Wednesday · 6:00–7:00 PM',coach:'Amir',capacity:4},
+      {id:'SW104',venue:'SH',name:'Junior Dolphins',level:'Kids · Intermediate',schedule:'Saturday · 10:00–11:00 AM',coach:'Hana',capacity:3},
+      {id:'SW105',venue:'SH',name:'Fitness Swim',level:'Adults · Fitness',schedule:'Friday · 7:00–8:00 PM',coach:'Daniel',capacity:4},
+      {id:'SW106',venue:'B8',name:'Water Confidence',level:'Beginner',schedule:'Sunday · 9:00–10:00 AM',coach:'Sarah',capacity:4}
+    ];
+    const starters=[
+      ['Alex Tan','SW101','Enrolled'],['Erin Lim','SW101','Enrolled'],['Maya Chen','SW101','Enrolled'],['Chloe Ng','SW101','Waitlisted'],
+      ['Noah Lee','SW102','Enrolled'],['Daniel Ong','SW102','Enrolled'],['Sarah Koh','SW103','Enrolled'],['Kai Lim','SW103','Enrolled'],['Iris Foo','SW103','Enrolled'],
+      ['Ella Tan','SW104','Enrolled'],['Ben Wong','SW104','Enrolled'],['Jamie Goh','SW105','Enrolled'],['Ari Lim','SW106','Enrolled'],['Zoey Ng','SW106','Enrolled']
+    ];
+    const key='bluecurrent-public-demo-v1', $=id=>document.getElementById(id);
+    const seed=()=>starters.map((x,i)=>({id:'s'+i,name:x[0],classId:x[1],status:x[2]}));
+    const getClass=id=>classes.find(c=>c.id===id);
+    const getVenue=id=>venues.find(v=>v.id===id);
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    let area='Clementi',venueId='PC',records=load(),toastTimer;
+    function load(){try{const raw=localStorage.getItem(key);if(raw){const r=JSON.parse(raw);if(Array.isArray(r)&&r.every(x=>x&&typeof x.name==='string'&&getClass(x.classId)))return r;}}catch(e){}return seed();}
+    function save(){try{localStorage.setItem(key,JSON.stringify(records));}catch(e){}}
+    function enrolled(id){return records.filter(r=>r.classId===id&&r.status==='Enrolled').length;}
+    function waitlisted(id){return records.filter(r=>r.classId===id&&r.status==='Waitlisted').length;}
+    function remaining(c){return Math.max(0,c.capacity-enrolled(c.id));}
+    function currentClasses(){return classes.filter(c=>c.venue===venueId);}
+    function toast(s){$('toast').textContent=s;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3000);}
+    function renderAreas(){$('areas').innerHTML=['Clementi','Bishan'].map(x=>`<button type="button" class="choice" data-area="${x}" aria-pressed="${x===area}"><span><strong>${x}</strong><small>2 condominium venues</small></span><span class="right">${x===area?'● Selected':'○ Choose'}</span></button>`).join('');}
+    function renderVenues(){
+      $('venues').innerHTML=venues.filter(v=>v.area===area).map(v=>`<button type="button" class="venue" data-venue="${v.id}" aria-pressed="${v.id===venueId}"><span class="eyebrow">${v.area} · Condominium</span><strong>${esc(v.name)}</strong><span class="addr">${esc(v.address)}</span><span class="choose">${v.id===venueId?'● Selected venue':'Choose this venue →'}</span></button>`).join('');
+      const v=getVenue(venueId);$('currentVenue').textContent=`${v.area} → ${v.name}`;$('map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(v.name+' Singapore');
+    }
+    function renderClasses(){
+      $('classSubtitle').textContent=`Illustrative class schedules at ${getVenue(venueId).name}`;
+      $('classes').innerHTML=currentClasses().map(c=>{
+        const n=enrolled(c.id),w=waitlisted(c.id),free=remaining(c);
+        return `<article class="course"><div class="coursehead"><span class="tag">${esc(c.level)}</span><span class="code">${c.id}</span></div><div><h3>${esc(c.name)}</h3><p>${esc(c.schedule)}<br>Coach ${esc(c.coach)} · ${esc(getVenue(venueId).name)}</p></div><div><div class="coursebottom"><span class="seat">${n} / ${c.capacity} enrolled${w?' · '+w+' waiting':''}</span><span class="seat">${free?free+' left':'Full'}</span></div><div class="bar"><div class="fill" style="width:${100*n/c.capacity}%"></div></div></div><button class="selectbtn" type="button" data-course="${c.id}">${free?'Select class':'Join waitlist'} →</button></article>`;
+      }).join('');
+    }
+    function renderForm(){
+      const old=$('courseSelect').value,v=getVenue(venueId),items=currentClasses();
+      $('formLocation').innerHTML=`<strong>Neighbourhood:</strong> ${esc(v.area)} → <strong>Condominium:</strong> ${esc(v.name)}`;
+      $('courseSelect').innerHTML=items.map(c=>`<option value="${c.id}">${esc(c.name)} · ${esc(c.schedule.split(' · ')[0])}</option>`).join('');
+      if(items.some(c=>c.id===old))$('courseSelect').value=old;
+      showAvailability();
+    }
+    function showAvailability(){
+      const c=getClass($('courseSelect').value);if(!c)return;const free=remaining(c),w=waitlisted(c.id);
+      $('availability').textContent=free?`${free} available ${free===1?'place':'places'} · Status will be Enrolled.`:`Class is full · New swimmer will be Waitlisted${w?' ('+w+' currently waiting)':''}.`;
+    }
+    function renderOverview(){
+      const ids=currentClasses().map(c=>c.id);
+      $('enrolled').textContent=records.filter(r=>ids.includes(r.classId)&&r.status==='Enrolled').length;
+      $('waiting').textContent=records.filter(r=>ids.includes(r.classId)&&r.status==='Waitlisted').length;
+      $('available').textContent=currentClasses().reduce((s,c)=>s+remaining(c),0);
+    }
+    function renderRows(){
+      const q=$('search').value.trim().toLowerCase(),scope=$('scope').value,status=$('statusFilter').value;
+      const filtered=records.filter(r=>{const c=getClass(r.classId);if(!c)return false;const v=getVenue(c.venue);return (scope==='all'||scope==='venue'&&v.id===venueId||scope==='area'&&v.area===area)&&(status==='all'||r.status===status)&&(!q||(r.name+' '+v.area+' '+v.name+' '+c.name).toLowerCase().includes(q));});
+      $('rows').innerHTML=filtered.length?filtered.map(r=>{const c=getClass(r.classId),v=getVenue(c.venue);return `<tr><td><strong>${esc(r.name)}</strong></td><td>${esc(v.area)}</td><td><strong>${esc(v.name)}</strong><br>${esc(c.name)}</td><td><span class="status ${r.status==='Waitlisted'?'wait':''}">${esc(r.status)}</span></td><td><button type="button" class="remove" data-remove="${esc(r.id)}">Remove</button></td></tr>`;}).join(''):'<tr><td colspan="5" class="empty">No matching swimmers. Try another location or filter.</td></tr>';
+    }
+    function render(){renderAreas();renderVenues();renderClasses();renderForm();renderOverview();renderRows();}
+    $('areas').addEventListener('click',e=>{const b=e.target.closest('[data-area]');if(!b)return;area=b.dataset.area;venueId=venues.find(v=>v.area===area).id;render();});
+    $('venues').addEventListener('click',e=>{const b=e.target.closest('[data-venue]');if(!b)return;venueId=b.dataset.venue;render();});
+    $('classes').addEventListener('click',e=>{const b=e.target.closest('[data-course]');if(!b)return;$('courseSelect').value=b.dataset.course;showAvailability();$('enrollment').scrollIntoView({behavior:'smooth'});$('swimmer').focus({preventScroll:true});});
+    $('courseSelect').addEventListener('change',showAvailability);
+    $('form').addEventListener('submit',e=>{
+      e.preventDefault();const name=$('swimmer').value.trim().replace(/\s+/g,' '),c=getClass($('courseSelect').value);
+      if(!c||name.length<2){toast('Please enter a swimmer name.');return;}
+      if(records.some(r=>r.classId===c.id&&r.name.toLowerCase()===name.toLowerCase())){toast('Swimmer is already listed for this class.');return;}
+      const status=remaining(c)?'Enrolled':'Waitlisted';records.push({id:'u'+Date.now()+Math.random().toString(36).slice(2),name,classId:c.id,status});save();render();$('swimmer').value='';toast(`${name} · ${status}`);
+    });
+    $('rows').addEventListener('click',e=>{
+      const b=e.target.closest('[data-remove]');if(!b)return;const i=records.findIndex(r=>r.id===b.dataset.remove);if(i<0)return;
+      const removed=records.splice(i,1)[0],c=getClass(removed.classId);let promoted=null;
+      if(remaining(c)>0){const next=records.find(r=>r.classId===c.id&&r.status==='Waitlisted');if(next){next.status='Enrolled';promoted=next.name;}}
+      save();render();toast(removed.name+' removed.'+(promoted?' '+promoted+' promoted from waitlist.':''));
+    });
+    ['search','scope','statusFilter'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',renderRows));
+    $('reset').addEventListener('click',()=>{if(!confirm('Restore all sample enrollments?'))return;records=seed();save();$('search').value='';$('scope').value='venue';$('statusFilter').value='all';render();toast('Sample data restored.');});
+    $('export').addEventListener('click',()=>{
+      const rows=[['Swimmer','Neighbourhood','Condominium','Class ID','Class','Status'],...records.map(r=>{const c=getClass(r.classId),v=getVenue(c.venue);return[r.name,v.area,v.name,c.id,c.name,r.status];})];
+      const csv=rows.map(row=>row.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n'),blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='swimming-enrollment-demo.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('CSV exported.');
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>
